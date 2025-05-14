@@ -5,7 +5,7 @@ export default function App() {
   return (
     <>
       <StatusBar style="auto" />
-      <WebView source={{ uri: 'https://idea-hub-app.vercel.app/' }} />
+      <WebView source={{ uri: 'https://necxis-assignment-one.vercel.app/' }} />
     </>
   );
 }
