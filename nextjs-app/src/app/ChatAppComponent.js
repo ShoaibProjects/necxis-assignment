@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback, memo } from 'react';
+import { useRouter } from 'next/navigation';
 import { auth, googleProvider, db } from '../../firebase';
 import {
   signInWithPopup,
@@ -144,7 +145,7 @@ const MessagesList = memo(({ user }) => {
         display: 'flex',
         flexDirection: 'column',
         gap: 3,
-        height: 380,
+        height: 300,
         overflow: 'auto',
         p: 3,
         bgcolor: 'grey.50',
@@ -250,10 +251,13 @@ const ChatAppComponent = () => {
     return () => unsubscribe();
   }, []);
 
+  const router = useRouter();
+
   const handleGoogleLogin = async () => {
     setLoadingAuth(true);
     try {
       await signInWithPopup(auth, googleProvider);
+      router.push("https://necxis-assignment-one.vercel.app/")
     } catch (error) {
       console.error('Error signing in with Google:', error);
       alert('Failed to sign in with Google. Please try again.');
